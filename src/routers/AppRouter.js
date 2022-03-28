@@ -10,31 +10,56 @@ import CartPage from "../components/CartPage";
 
 const AppRouter = (props) => {
   const [items, setItems] = useState([]);
+  const [numItems, setNum] = useState(0);
 
   let handleAddItemParent = (item) => {
+    if (!items.find((element) => element.name === item.name)) {
+      setItems(items.concat(item));
+    } else {
+      let index = items
+        .map(function (e) {
+          return e.name;
+        })
+        .indexOf(item.name);
 
-    setItems(items.concat(item));
-
+      let newState = [...items];
+      newState[index].quantity += 1;
+      setItems(newState);
+    }
   };
 
-  useEffect(()=> {
-console.log(items);
- 
+  let updateCartHeader = () => {
+    let startingNumber = 0;
 
-   }, [items])
+    items.forEach((element) => {
+      startingNumber += element.quantity;
+    });
+    return startingNumber;
+  };
+
+  useEffect(() => {
+    setNum(updateCartHeader());
+    console.log(items);
+  }, [items]);
 
   return (
     <BrowserRouter>
       <div>
-        <Header />
+        <Header numItems={numItems} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
             path="/shop"
-            element={<ShopPage handleAddItemParent={(item)=> {handleAddItemParent(item)}} />}
+            element={
+              <ShopPage
+                handleAddItemParent={(item) => {
+                  handleAddItemParent(item);
+                }}
+              />
+            }
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/cart" element={<CartPage cartItems={items}/>} />
+          <Route path="/cart" element={<CartPage cartItems={items} />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

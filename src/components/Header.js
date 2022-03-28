@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+
 const Header = (props) => (
   <header className="header">
     <h1>Fake Shopping Site</h1>

@@ -5,6 +5,7 @@ const ShopItemCard = (props) => {
     const newItem = {
       price: props.price,
       name: props.name,
+      quantity: 1
     };
     props.handleAddItemParent(newItem);
   };
