@@ -1,6 +1,5 @@
-h1 {
-    color: red;
-    &:hover {
-        color: blue;
-    }
-}
+@import './base/settings';
+@import './base/base';
+@import './components/header';
+@import './components/shopItemCard';
+@import './components/shopPage'

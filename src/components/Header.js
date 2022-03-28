@@ -1,22 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Header = () => (
-    <header>
-      <h1>Fake Shopping Site</h1>
-      <NavLink to="/" exact={true}>
-        Home
-      </NavLink>
-      <NavLink to="/shop">
-        Shop
-      </NavLink>
-      <NavLink to="/about">
-        About
-      </NavLink>
-      <NavLink to="/cart">
-        Cart
-      </NavLink>
-    </header>
-  );
+const Header = (props) => (
+  <header className="header">
+    <h1>Fake Shopping Site</h1>
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/shop">Shop</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/cart">Cart: {props.numItems}</NavLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
+);
 
-  export default Header;
+export default Header;

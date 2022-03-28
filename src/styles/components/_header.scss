@@ -1,0 +1,35 @@
+
+@import '../base/settings';
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    color: $off-white;
+}
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.header ul li a {
+    margin: $s-size;
+    border: 1px solid $off-white;
+    padding: $s-size;
+    color: $off-white;
+}
+
+@media only screen and (min-width: 600px) {
+
+.header {
+    flex-direction: row;
+}
+
+
+}
