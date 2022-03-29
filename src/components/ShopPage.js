@@ -12,7 +12,6 @@ props.handleAddItemParent(item);
 
   return (
     <div className="shop-products-container">
-      <div>This is the shopping page</div>
       <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={100} name="Bike"/>
       <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={200}  name="Helmet"/>
 

@@ -6,8 +6,8 @@ const CartItemCard = (props) => {
   return (
     <div>
       {props.name && <h3>{props.name}</h3>}
-      {props.price && <p>{props.price}</p>}
-      {props.quantity && <p>{props.quantity}</p>}
+      {props.price && <p>${props.price}</p>}
+      {props.quantity && <p>Quantity: {props.quantity}</p>}
       {props.image && <p>{props.image}</p>}
 
     </div>

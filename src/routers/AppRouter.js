@@ -7,39 +7,34 @@ import AboutPage from "../components/AboutPage";
 import NotFoundPage from "../components/NotFoundPage";
 import Header from "../components/Header";
 import CartPage from "../components/CartPage";
+import addUpCartItems from "../components/utils/addUpCartItems";
 
-const AppRouter = (props) => {
+const AppRouter = () => {
   const [items, setItems] = useState([]);
   const [numItems, setNum] = useState(0);
 
-  let handleAddItemParent = (item) => {
-    if (!items.find((element) => element.name === item.name)) {
-      setItems(items.concat(item));
+  let handleAddItemParent = (item, arrayOfCartItems) => {
+    if (!arrayOfCartItems.find((element) => element.name === item.name)) {
+      setItems(arrayOfCartItems.concat(item));
     } else {
-      let index = items
+      let index = arrayOfCartItems
         .map(function (e) {
           return e.name;
         })
         .indexOf(item.name);
+        
 
-      let newState = [...items];
-      newState[index].quantity += 1;
+      let newState = [...arrayOfCartItems];
+      
+      newState[index].quantity += item.quantity;
       setItems(newState);
     }
   };
 
-  let updateCartHeader = () => {
-    let startingNumber = 0;
 
-    items.forEach((element) => {
-      startingNumber += element.quantity;
-    });
-    return startingNumber;
-  };
 
   useEffect(() => {
-    setNum(updateCartHeader());
-    console.log(items);
+    setNum(addUpCartItems(items));
   }, [items]);
 
   return (
@@ -53,7 +48,7 @@ const AppRouter = (props) => {
             element={
               <ShopPage
                 handleAddItemParent={(item) => {
-                  handleAddItemParent(item);
+                  handleAddItemParent(item, items);
                 }}
               />
             }

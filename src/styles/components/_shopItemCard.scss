@@ -1,7 +1,15 @@
 .shop-item-card-container {
     height: 20em;
-    width: 20em;
-    background-color: blue;
+    max-width: 10em;
+    background-color: $dark-blue;
+    margin: $s-size;
+    border: 1px solid $off-white;
+    padding: $s-size;
+}
+
+.shop-item-card-container >input[type="number"] {
+
+max-width: 100%;
 }
 
 .image-container {
@@ -12,4 +20,8 @@
 .image-container > img {
     width: 100%;
 
+}
+
+p {
+    color: $off-white;
 }

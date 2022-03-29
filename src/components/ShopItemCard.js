@@ -1,11 +1,14 @@
 import React from "react";
+import { useState } from "react";
 
 const ShopItemCard = (props) => {
+    let [quant, setQuant] = useState(1);
+
   let handleAddItem = () => {
     const newItem = {
       price: props.price,
       name: props.name,
-      quantity: 1
+      quantity: quant
     };
     props.handleAddItemParent(newItem);
   };
@@ -15,7 +18,7 @@ const ShopItemCard = (props) => {
       <div className="image-container">
         <img src={props.picture} />
       </div>
-      <input type="number" placeholder="1" />
+      <input onChange={(e)=> {setQuant(parseInt(e.target.value))}} type="number" placeholder="1"/>
       <button onClick={handleAddItem}>Add to cart</button>
       <div>
         <p>{props.name}</p>
