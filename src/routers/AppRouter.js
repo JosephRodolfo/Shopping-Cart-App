@@ -8,54 +8,12 @@ import NotFoundPage from "../components/NotFoundPage";
 import Header from "../components/Header";
 import CartPage from "../components/CartPage";
 import addUpCartItems from "../components/utils/addUpCartItems";
-
+import addItem from "../components/utils/addItem";
+import editCartQuantity from "../components/utils/editCartQuantity";
+import removeCartItem from "../components/utils/removeCartItem";
 const AppRouter = () => {
   const [items, setItems] = useState([]);
   const [numItems, setNum] = useState(0);
-
-  let handleAddItemParent = (item, arrayOfCartItems) => {
-    if (!arrayOfCartItems.find((element) => element.name === item.name)) {
-      setItems(arrayOfCartItems.concat(item));
-    } else {
-      let index = arrayOfCartItems
-        .map(function (e) {
-          return e.name;
-        })
-        .indexOf(item.name);
-
-      let newState = [...arrayOfCartItems];
-
-      newState[index].quantity += item.quantity;
-      setItems(newState);
-    }
-  };
-
-  const removeCartItemCallBack = (item) => {
-    let index = items
-      .map(function (e) {
-        return e.name;
-      })
-      .indexOf(item);
-
-    let newState = [...items];
-    newState.splice(index, 1);
-    setItems(newState);
-  };
-
-  const handleEditQuantity = (quantity, item) => {
-    let index = items
-      .map(function (e) {
-        return e.name;
-      })
-      .indexOf(item);
-
-      let newState = [...items];
-
-      newState[index].quantity = quantity;
-      setItems(newState);
-
-
-  };
 
   useEffect(() => {
     setNum(addUpCartItems(items));
@@ -72,7 +30,7 @@ const AppRouter = () => {
             element={
               <ShopPage
                 handleAddItemParent={(item) => {
-                  handleAddItemParent(item, items);
+                  setItems(addItem(item, items));
                 }}
               />
             }
@@ -82,8 +40,12 @@ const AppRouter = () => {
             path="/cart"
             element={
               <CartPage
-                removeCartItemCallBack={removeCartItemCallBack}
-                handleEditQuantity={handleEditQuantity}
+                removeCartItemCallBack={(item) => {
+                  setItems(removeCartItem(item, items));
+                }}
+                handleEditQuantity={(quantity, item) => {
+                  setItems(editCartQuantity(quantity, item, items));
+                }}
                 cartItems={items}
               />
             }

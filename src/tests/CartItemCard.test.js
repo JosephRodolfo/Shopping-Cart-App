@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CartItemCard from "../components/CartItemCard";
 import CartPage from "../components/CartPage";
-import ShallowRenderer from 'react-test-renderer/shallow'; //
+//import ShallowRenderer from 'react-test-renderer/shallow'; //
 
 describe("edit button", () => {
  
