@@ -21,6 +21,11 @@ const CartPage = (props) => {
     props.removeCartItemCallBack(item);
   };
 
+  const handleEditQuantity = (quantity, name)=> {
+
+    props.handleEditQuantity(quantity, name);
+  }
+
   return (
     <div>
       {props.cartItems.map((element, index) => (
@@ -31,6 +36,7 @@ const CartPage = (props) => {
           quantity={element.quantity}
           image={element.image}
           removeCartItemCallBack={removeCartItemCallBack}
+          handleEditQuantity={handleEditQuantity}
         />
       ))}
 

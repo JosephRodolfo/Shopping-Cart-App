@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 const CartItemCard = (props) => {
-
-  const [editCart, setEdit] = useState(false);
+  const [editCart, setEdit] = useState(true);
 
   const removeItem = (item, properties) => {
     let itemName = properties.name;
@@ -12,22 +11,37 @@ const CartItemCard = (props) => {
   };
 
   const handleChangeNumber = () => {
-
     let newEdit = !editCart;
 
     setEdit(newEdit);
 
     console.log(editCart);
-  }
+  };
 
+  const handleEditQuantity = (quantity, name) => {
+    let itemName = name.name;
+
+    props.handleEditQuantity(quantity, itemName);
+  };
 
   return (
     <div className="cart-item-card">
       {props.name && <h3 className="cart-item-card-title">{props.name}</h3>}
       {props.price && <p>${props.price}</p>}
       <div className="edit-number-container">
-      {editCart ? <p>Quantity: {props.quantity}</p> : <input type="number"/>}
-      <button onClick={handleChangeNumber}>Edit</button>
+        {editCart ? (
+          <p>Quantity: {props.quantity}</p>
+        ) : (
+          <input
+            onChange={(e) => {
+              handleEditQuantity(parseInt(e.target.value), props);
+            }}
+            type="number"
+            placeholder={props.quantity}
+            value={props.quantity}
+          />
+        )}
+        <button onClick={handleChangeNumber}>{editCart ? "Edit" : "Save"}</button>
       </div>
       {props.image && <p>{props.image}</p>}
       <button onClick={(e) => removeItem(e, props)}>Remove</button>

@@ -31,8 +31,6 @@ const AppRouter = () => {
   };
 
   const removeCartItemCallBack = (item) => {
-    console.log(item);
-
     let index = items
       .map(function (e) {
         return e.name;
@@ -42,6 +40,21 @@ const AppRouter = () => {
     let newState = [...items];
     newState.splice(index, 1);
     setItems(newState);
+  };
+
+  const handleEditQuantity = (quantity, item) => {
+    let index = items
+      .map(function (e) {
+        return e.name;
+      })
+      .indexOf(item);
+
+      let newState = [...items];
+
+      newState[index].quantity = quantity;
+      setItems(newState);
+
+
   };
 
   useEffect(() => {
@@ -70,6 +83,7 @@ const AppRouter = () => {
             element={
               <CartPage
                 removeCartItemCallBack={removeCartItemCallBack}
+                handleEditQuantity={handleEditQuantity}
                 cartItems={items}
               />
             }
