@@ -22,16 +22,27 @@ const AppRouter = () => {
           return e.name;
         })
         .indexOf(item.name);
-        
 
       let newState = [...arrayOfCartItems];
-      
+
       newState[index].quantity += item.quantity;
       setItems(newState);
     }
   };
 
+  const removeCartItemCallBack = (item) => {
+    console.log(item);
 
+    let index = items
+      .map(function (e) {
+        return e.name;
+      })
+      .indexOf(item);
+
+    let newState = [...items];
+    newState.splice(index, 1);
+    setItems(newState);
+  };
 
   useEffect(() => {
     setNum(addUpCartItems(items));
@@ -54,7 +65,15 @@ const AppRouter = () => {
             }
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/cart" element={<CartPage cartItems={items} />} />
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                removeCartItemCallBack={removeCartItemCallBack}
+                cartItems={items}
+              />
+            }
+          />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

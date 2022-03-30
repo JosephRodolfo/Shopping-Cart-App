@@ -1,9 +1,17 @@
 @import '../base/settings';
 .cart-item-card {
     border-bottom: 1px solid $off-white;
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-item-card-title {
 
     color: $off-white
+}
+
+.edit-number-container {
+    display: flex;
+    flex-direction: row;
+    height: 2em;
 }
