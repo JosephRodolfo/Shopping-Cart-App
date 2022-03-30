@@ -6,7 +6,6 @@ const CartItemCard = (props) => {
   const removeItem = (item, properties) => {
     let itemName = properties.name;
 
-    //  const index = props.map(object => object.name).indexOf(itemName);
     props.removeCartItemCallBack(itemName);
   };
 

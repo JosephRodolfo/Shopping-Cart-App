@@ -51,18 +51,14 @@ test("add item to cart array correctly", () => {
   });
 
   test("add item to cart array correctly", () => {
+    let sampleItem = { name: "Seat", quantity: 30, price: 100 };
 
-
-    let sampleItem =     { name: "Seat", quantity: 30, price: 100 };
-
-    expect(addItem(sampleItem, sampleCart)).toEqual( [
-        { name: "Bike", quantity: 500, price: 100 },
-        { name: "Pedal", quantity: 2, price: 100 },
-        { name: "Helmet", quantity: 1, price: 100 },
-        { name: "Seat", quantity: 30, price: 100 },
-
-
-      ]);
+    expect(addItem(sampleItem, sampleCart)).toEqual([
+      { name: "Bike", quantity: 500, price: 100 },
+      { name: "Pedal", quantity: 2, price: 100 },
+      { name: "Helmet", quantity: 1, price: 100 },
+      { name: "Seat", quantity: 30, price: 100 },
+    ]);
   });
 
 
