@@ -11,6 +11,7 @@ import addUpCartItems from "../components/utils/addUpCartItems";
 import addItem from "../components/utils/addItem";
 import editCartQuantity from "../components/utils/editCartQuantity";
 import removeCartItem from "../components/utils/removeCartItem";
+
 const AppRouter = () => {
   const [items, setItems] = useState([]);
   const [numItems, setNum] = useState(0);
