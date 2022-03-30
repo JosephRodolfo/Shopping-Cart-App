@@ -6,9 +6,10 @@ const CartPage = (props) => {
   const [items, setItems] = useState([]);
 
   const sumAllItems = (allItems) => {
+    let arr = allItems || [];
     let total = 0;
 
-    allItems.forEach((element) => {
+    arr.forEach((element) => {
       let multiplied = element.quantity * element.price;
       total += multiplied;
     });
@@ -28,7 +29,7 @@ const CartPage = (props) => {
 
   return (
     <div>
-      {props.cartItems.map((element, index) => (
+      {props.cartItems?.map((element, index) => (
         <CartItemCard
           key={index}
           name={element.name}

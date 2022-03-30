@@ -15,7 +15,6 @@ const CartItemCard = (props) => {
 
     setEdit(newEdit);
 
-    console.log(editCart);
   };
 
   const handleEditQuantity = (quantity, name) => {
@@ -41,7 +40,7 @@ const CartItemCard = (props) => {
             value={props.quantity}
           />
         )}
-        <button onClick={handleChangeNumber}>{editCart ? "Edit" : "Save"}</button>
+        <button id="edit-quantity" onClick={handleChangeNumber}>{editCart ? "Edit" : "Save"}</button>
       </div>
       {props.image && <p>{props.image}</p>}
       <button onClick={(e) => removeItem(e, props)}>Remove</button>
