@@ -20,12 +20,12 @@ export const addItem = ({
 
   //add item to cart 
 
-  export const addItemToCart = ({id, name, price, quantity} = {})=> ({
+  export const addItemToCart = ({id, name, price, quant} = {})=> ({
 id,
 type: 'ADD_ITEM_TO_CART',
 name, 
 price,
-quantity,
+quant,
 
 
   });

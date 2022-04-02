@@ -24,20 +24,19 @@ const CartItemCard = (props) => {
 
   return (
     <div className="cart-item-card">
-      {console.log(props)}
       {props.name && <h3 className="cart-item-card-title">{props.name}</h3>}
       {props.price && <p>${props.price}</p>}
       <div className="edit-number-container">
         {editCart ? (
-          <p>Quantity: {props.quantity}</p>
+          <p>Quantity: {props.quant}</p>
         ) : (
           <input
             onChange={(e) => {
               handleEditQuantity(parseInt(e.target.value), props);
             }}
             type="number"
-            placeholder={props.quantity}
-            value={props.quantity}
+            placeholder={props.quant}
+            value={props.quant}
           />
         )}
         <button id="edit-quantity" onClick={handleChangeNumber}>{editCart ? "Edit" : "Save"}</button>
