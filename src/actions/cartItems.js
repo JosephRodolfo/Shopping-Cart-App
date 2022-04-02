@@ -1,5 +1,5 @@
 
-
+import { v4 as uuidv4 } from 'uuid';
 //add items
 export const addItem = ({
     picture = "",
@@ -8,8 +8,8 @@ export const addItem = ({
     quantity = 0,
   } = {}) => ({
     type: "ADD_ITEM",
-    expense: {
-      id: uuid(),
+    item: {
+      id: uuidv4(),
       picture,
       name,
       price,

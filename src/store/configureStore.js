@@ -5,7 +5,7 @@ import itemsReducer from '../reducers/items';
 export default ()=>{
 const store = createStore(
     combineReducers({
-      expenses: itemsReducer,
+      items: itemsReducer,
     })
   );
 

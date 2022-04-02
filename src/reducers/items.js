@@ -1,9 +1,9 @@
-const expensesReducerDefaultState = [];
+const itemsReducerDefaultState = [];
 
-export default (state = expensesReducerDefaultState, action) => {
+export default (state = itemsReducerDefaultState, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      return [...state, action.expense];
+      return [...state, action.item];
     case "REMOVE_ITEM":
       return state.filter(({ id }) => id !== action.id);
     case "EDIT_IEM":
