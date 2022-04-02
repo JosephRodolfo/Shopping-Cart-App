@@ -5,7 +5,7 @@ export const addItem = ({
     picture = "",
     name = "",
     price = 0,
-    quantity = 0,
+    quantity = 1,
   } = {}) => ({
     type: "ADD_ITEM",
     item: {
@@ -15,6 +15,19 @@ export const addItem = ({
       price,
       quantity,
     },
+  });
+
+
+  //add item to cart 
+
+  export const addItemToCart = ({id, name, price, quantity} = {})=> ({
+id,
+type: 'ADD_ITEM_TO_CART',
+name, 
+price,
+quantity,
+
+
   });
   //REMOvE_EXPENSE
   

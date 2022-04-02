@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import CartItemCard from "./CartItemCard";
+import { connect } from "react-redux";
+import selectItems from "../selectors/items";
+
 
 const CartPage = (props) => {
 //  const [items, setItems] = useState([]);
@@ -28,17 +31,9 @@ const CartPage = (props) => {
   return (
     <div>
       <div id="cart-items-container">
-        {props.cartItems?.map((element, index) => (
-          <CartItemCard
-            key={index}
-            name={element.name}
-            price={element.price}
-            quantity={element.quantity}
-            image={element.image}
-            removeCartItemCallBack={removeCartItemCallBack}
-            handleEditQuantity={handleEditQuantity}
-          />
-        ))}
+      {props.items.cartItems.map((element) => {
+        return <CartItemCard key={element.id} {...element} />;
+      })}
       </div>
       <div className="submit-total-checkout-container">
         <h2>Total: ${sumAllItems(props.cartItems)}</h2>
@@ -48,4 +43,13 @@ const CartPage = (props) => {
   );
 };
 
-export default CartPage;
+
+
+const mapStateToProps = (state) => {
+
+  return {
+    items: selectItems(state.items),
+  };
+};
+
+export default connect(mapStateToProps)(CartPage);

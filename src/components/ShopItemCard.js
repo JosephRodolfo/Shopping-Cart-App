@@ -1,33 +1,37 @@
 import React from "react";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { addItemToCart } from "../actions/cartItems";
 
-const ShopItemCard = (props) => {
+
+const ShopItemCard = ({dispatch, id, picture, price, name}) => {
     let [quant, setQuant] = useState(1);
 
-  let handleAddItem = () => {
-    const newItem = {
-      price: props.price,
-      name: props.name,
-      quantity: quant
-    };
-    props.handleAddItemParent(newItem);
-  };
+  
 
   return (
     <div className="shop-item-card-container">
       <div className="image-container">
-        <img src={props.picture} />
+        <img src={picture} />
       </div>
       <input onChange={(e)=> {setQuant(parseInt(e.target.value))}} type="number" placeholder="1"/>
-      <button onClick={handleAddItem}>Add to cart</button>
+      <button onClick={(e)=>{
+        dispatch(addItemToCart( { id, price, name, quant } ))}}>Add to cart</button>
       <div>
-        <p>{props.name}</p>
+        <p>{name}</p>
 
         <p>Price</p>
-        <p>${props.price}</p>
+        <p>${price}</p>
       </div>
     </div>
   );
 };
 
-export default ShopItemCard;
+
+
+
+
+
+export default connect()(ShopItemCard);
+
+

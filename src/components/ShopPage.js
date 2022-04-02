@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import selectItems from "../selectors/items";
 
 const ShopPage = (props) => {
-  console.log(props);
 
   let handleAddItemParent = (item) => {
     props.handleAddItemParent(item);
@@ -13,9 +12,9 @@ const ShopPage = (props) => {
 
   return (
     <div className="shop-products-container">
-      {props.items.map((element) => {
+      {props.items.shopItems.map((element) => {
         //   console.log(props.expenses);
-        return <ShopItemCard handleAddItemParent={handleAddItemParent} key={element.id} {...element} />;
+        return <ShopItemCard key={element.id} {...element} />;
       })}
 
       {/* <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={100} name="Bike"/>
@@ -30,6 +29,7 @@ const ShopPage = (props) => {
 //export default ShopPage;
 
 const mapStateToProps = (state) => {
+
   return {
     items: selectItems(state.items),
   };

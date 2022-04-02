@@ -24,6 +24,7 @@ const CartItemCard = (props) => {
 
   return (
     <div className="cart-item-card">
+      {console.log(props)}
       {props.name && <h3 className="cart-item-card-title">{props.name}</h3>}
       {props.price && <p>${props.price}</p>}
       <div className="edit-number-container">
