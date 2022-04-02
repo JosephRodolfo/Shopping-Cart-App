@@ -11,7 +11,16 @@ props.handleAddItemParent(item);
 }
 
   return (
+
     <div className="shop-products-container">
+
+
+    {props.expenses.map((element) => {
+      console.log(props.expenses);
+      return <ShopItemCard key={element.id} {...element} />;
+    })}
+
+
       <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={100} name="Bike"/>
       <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={200}  name="Helmet"/>
 

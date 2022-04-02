@@ -10,9 +10,35 @@ body {
 
 button {
     cursor: pointer;
+    background-color: $light-blue;
+    border: 1px solid $off-white;
+    color: $off-white;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: $s-size;
+    font-size: $m-size;
+
 
     &:disabled {
         cursor: default;
     }
+
+    &:hover {
+        background-color: lighten($light-blue, 10);
+    }
 }
 
+a {
+    background-color: $light-blue;
+    text-decoration: none;
+    font-size: $m-size;
+
+    &:hover {
+        background-color: lighten($light-blue, 10);
+    }
+}
+
+input {
+    border: none;
+    background-color: $light-blue;
+    color: $off-white;
+}
