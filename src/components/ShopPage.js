@@ -6,9 +6,7 @@ import selectItems from "../selectors/items";
 
 const ShopPage = (props) => {
 
-  let handleAddItemParent = (item) => {
-    props.handleAddItemParent(item);
-  };
+
 
   return (
     <div className="shop-products-container">

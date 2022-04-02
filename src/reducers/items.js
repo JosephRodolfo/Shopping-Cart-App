@@ -25,7 +25,9 @@ export default (state = itemsReducerDefaultState, action) => {
         return { ...state, cartItems: [...newCartItemsState] };
       }
     case "REMOVE_ITEM":
-      return state.filter(({ id }) => id !== action.id);
+      let newCartState = state.cartItems.filter(({ id }) => id !== action.id);
+
+      return { ...state, cartItems: [...newCartState] };
     case "EDIT_IEM":
       return state.map((element) =>
         element.id === action.id ? { ...element, ...action.updates } : element

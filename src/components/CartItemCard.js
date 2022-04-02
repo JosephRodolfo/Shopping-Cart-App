@@ -1,50 +1,50 @@
 import React from "react";
 import { useState } from "react";
-const CartItemCard = (props) => {
+import { connect } from "react-redux";
+import { removeItem } from "../actions/cartItems";
+const CartItemCard = ({name, price, quant, id, dispatch, image}) => {
   const [editCart, setEdit] = useState(true);
 
-  const removeItem = (item, properties) => {
-    let itemName = properties.name;
 
-    props.removeCartItemCallBack(itemName);
-  };
-
+/*
   const handleChangeNumber = () => {
     let newEdit = !editCart;
 
     setEdit(newEdit);
 
-  };
-
+  };*/
+/*
   const handleEditQuantity = (quantity, name) => {
     let itemName = name.name;
 
     props.handleEditQuantity(quantity, itemName);
-  };
+  };*/
 
   return (
     <div className="cart-item-card">
-      {props.name && <h3 className="cart-item-card-title">{props.name}</h3>}
-      {props.price && <p>${props.price}</p>}
+      {name && <h3 className="cart-item-card-title">{name}</h3>}
+      {price && <p>${price}</p>}
       <div className="edit-number-container">
         {editCart ? (
-          <p>Quantity: {props.quant}</p>
+          <p>Quantity: {quant}</p>
         ) : (
           <input
             onChange={(e) => {
-              handleEditQuantity(parseInt(e.target.value), props);
             }}
             type="number"
-            placeholder={props.quant}
-            value={props.quant}
+            placeholder={quant}
+            value={quant}
           />
         )}
-        <button id="edit-quantity" onClick={handleChangeNumber}>{editCart ? "Edit" : "Save"}</button>
+        <button id="edit-quantity">{editCart ? "Edit" : "Save"}</button>
       </div>
-      {props.image && <p>{props.image}</p>}
-      <button onClick={(e) => removeItem(e, props)}>Remove</button>
+      {image && <p>{image}</p>}
+      <button onClick={(e) => {dispatch(removeItem({id}))}}>Remove</button>
     </div>
   );
 };
 
-export default CartItemCard;
+
+
+export default connect()(CartItemCard);
+
