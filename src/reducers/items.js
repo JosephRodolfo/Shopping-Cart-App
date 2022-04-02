@@ -28,10 +28,18 @@ export default (state = itemsReducerDefaultState, action) => {
       let newCartState = state.cartItems.filter(({ id }) => id !== action.id);
 
       return { ...state, cartItems: [...newCartState] };
-    case "EDIT_IEM":
-      return state.map((element) =>
-        element.id === action.id ? { ...element, ...action.updates } : element
-      );
+    case "EDIT_ITEM_QUANTITY":
+      let index = state.cartItems
+        .map(function (e) {
+          return e.id;
+        })
+        .indexOf(action.id);
+
+      let newCartState2 = state.cartItems;
+
+      newCartState2[index].quant = parseInt(action.updatedQuant);
+
+      return { ...state, cartItems: [...newCartState2] };
 
     default:
       return state;

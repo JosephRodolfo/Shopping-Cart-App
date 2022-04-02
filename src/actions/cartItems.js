@@ -39,8 +39,8 @@ quant,
   
   //EDIT_EXPENSE
   
- export const editItem = (id, updates) => ({
-    type: "EDIT_ITEM",
+ export const editCartQuantity = (id, updatedQuant) => ({
+    type: "EDIT_ITEM_QUANTITY",
     id,
-    updates,
+    updatedQuant,
   });

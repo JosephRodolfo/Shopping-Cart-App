@@ -2,17 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { removeItem } from "../actions/cartItems";
+//import editCartQuantity from "./utils/editCartQuantity";
+import { editCartQuantity } from "../actions/cartItems";
 const CartItemCard = ({name, price, quant, id, dispatch, image}) => {
   const [editCart, setEdit] = useState(true);
 
 
-/*
+
   const handleChangeNumber = () => {
     let newEdit = !editCart;
 
     setEdit(newEdit);
 
-  };*/
+  };
 /*
   const handleEditQuantity = (quantity, name) => {
     let itemName = name.name;
@@ -30,16 +32,20 @@ const CartItemCard = ({name, price, quant, id, dispatch, image}) => {
         ) : (
           <input
             onChange={(e) => {
+              console.log(id);
+              let x = e.target.value;
+
+              dispatch(editCartQuantity(id, x))
             }}
             type="number"
             placeholder={quant}
             value={quant}
           />
         )}
-        <button id="edit-quantity">{editCart ? "Edit" : "Save"}</button>
+        <button onClick={handleChangeNumber} id="edit-quantity">{editCart ? "Edit" : "Save"}</button>
       </div>
       {image && <p>{image}</p>}
-      <button onClick={(e) => {dispatch(removeItem({id}))}}>Remove</button>
+      <button onClick={() => {dispatch(removeItem({id}))}}>Remove</button>
     </div>
   );
 };
