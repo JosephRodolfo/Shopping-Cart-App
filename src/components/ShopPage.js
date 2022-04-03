@@ -3,15 +3,17 @@ import ShopItemCard from "./ShopItemCard";
 import bike from "../assets/bike.png";
 import { connect } from "react-redux";
 import selectItems from "../selectors/items";
+import ItemListFilters from "./ItemListFilters";
 
 const ShopPage = (props) => {
 
 
 
   return (
+    <div>
+      <ItemListFilters />
     <div className="shop-products-container">
       {props.items.shopItems.map((element) => {
-        //   console.log(props.expenses);
         return <ShopItemCard key={element.id} {...element} />;
       })}
 
@@ -22,6 +24,7 @@ const ShopPage = (props) => {
 
       <ShopItemCard handleAddItemParent={handleAddItemParent} picture={bike} price={230} name="Seat"/> */}
     </div>
+    </div>
   );
 };
 //export default ShopPage;
@@ -29,7 +32,7 @@ const ShopPage = (props) => {
 const mapStateToProps = (state) => {
 
   return {
-    items: selectItems(state.items),
+    items: selectItems(state.items, state.filters),
   };
 };
 

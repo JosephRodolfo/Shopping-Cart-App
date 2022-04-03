@@ -15,12 +15,7 @@ const CartItemCard = ({name, price, quant, id, dispatch, image}) => {
     setEdit(newEdit);
 
   };
-/*
-  const handleEditQuantity = (quantity, name) => {
-    let itemName = name.name;
 
-    props.handleEditQuantity(quantity, itemName);
-  };*/
 
   return (
     <div className="cart-item-card">
@@ -32,7 +27,6 @@ const CartItemCard = ({name, price, quant, id, dispatch, image}) => {
         ) : (
           <input
             onChange={(e) => {
-              console.log(id);
               let x = e.target.value;
 
               dispatch(editCartQuantity(id, x))

@@ -8,6 +8,8 @@ import roadBike from '../src/assets/road-bike.png';
 import helmet from '../src/assets/helmet.jpg';
 import wheel from '../src/assets/bicycle-wheel.jpg';
 import mountainBike from '../src/assets/mountain-bike.png'
+import selectItems from '../src/selectors/items'
+
 
 import App from "./App";
 
@@ -20,7 +22,6 @@ store.dispatch(addItem({ name: "Mountain Bike", price: 500, quantity: 0, picture
 store.dispatch(addItem({ name: "Wheel", price: 70, quantity: 0, picture: wheel}));
 
 
-console.log(store.getState());
 
 const jsx = (
   <Provider store={store}>
